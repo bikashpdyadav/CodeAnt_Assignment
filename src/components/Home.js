@@ -5,6 +5,7 @@ import CloudSecurity from './CloudSecurity';
 import Setting from './Setting';
 import SideBar from "./SideBar";
 import HowToUse from "./HowToUse";
+import MenuBar from "./MenuBar";
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState("repo");
@@ -27,8 +28,15 @@ const Home = () => {
   return (
     <>
       <div className="flex min-h-screen">
-        <SideBar setActiveTab={setActiveTab} />
-        {renderActiveTab()}
+        <div className="hidden md:block">
+          <SideBar setActiveTab={setActiveTab} />
+        </div>
+        <div className="flex-col w-full">
+          <div className="block md:hidden">
+            <MenuBar setActiveTab={setActiveTab} />
+          </div>
+          {renderActiveTab()}
+        </div>
       </div>
     </>
   );
